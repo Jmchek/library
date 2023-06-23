@@ -19,6 +19,31 @@
         </thead>
     </table>
 
+    <div class="formContainer">
+        <button class="newBookButton">NEW BOOK</button>
+        <div class="form-hid" id="form">
+            <form action="http://httpbin.org/post" method="post" id="myform">
+                <div id="col1">
+                    <div>
+                      <label for="title">Title<br></label>
+                      <input type="text" name="title" id="title">
+                    </div>
+                    <div>
+                        <label for="author">Author<br></label>
+                        <input type="text" name="author" id="author">
+                      </div>
+                      <div>
+                        <label for="pages">Pages<br></label>
+                        <input type="text" name="pages" id="pages">
+                    </div>
+                    <div>
+                        <label for="read">Read<br></label>
+                        <input type="text" name="read" id="read">
+                    </div>
+                </div>
+        </div>
+    </div>
+
     <script src="library.js"></script>
 </body>
 </html>

@@ -45,12 +45,13 @@ function generateTable() {
     const row = document.createElement("tr");
 
     for (let j = 0; j < 4; j++) {
+      let values = Object.values(myLibrary[i]);
       // Create a <td> element and a text node, make the text
       // node the contents of the <td>, and put the <td> at
       // the end of the table row
       const cell = document.createElement("td");
       // const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
-      const cellText = document.createTextNode(myLibrary[i].value);
+      const cellText = document.createTextNode(values[j]);
       //i would reference the object itself whereas j would represent the key in the object
       cell.appendChild(cellText);
       row.appendChild(cell);
@@ -64,4 +65,14 @@ function generateTable() {
   tbl.appendChild(tblBody);
 }
 
+function generateForm() {
+  const btn = document.querySelector(".newBookButton");
+  const frm = document.getElementById("form");
+
+  btn.addEventListener('click', () => {
+    frm.classList.remove("form-hid");
+  });
+}
+
 generateTable();
+generateForm();

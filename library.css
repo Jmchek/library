@@ -1,18 +1,36 @@
 body {
     margin: 0;
 
-    display: flex;
+    display: grid;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     height: 1080px;
-
+    gap: 20px;
 }
 
 .bookTable {
-    /* border-style: solid; */
     border: 1px solid black;
+    width: 640px;
 }
 
 th, td {
     border: 1px solid black;
-  }
+}
+
+.newBookButton {
+    width: 100px;
+}
+
+.formContainer {
+    display: grid;
+    align-self:flex-start;
+    gap: 20px;
+}
+
+.form-hid {
+    display: none;
+}
+
+.form-unhid {
+    
+}
