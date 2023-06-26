@@ -38,6 +38,12 @@ function generateTable() {
   // creates a <table> element and a <tbody> element
   const tbl = document.querySelector(".bookTable");
   const tblBody = document.createElement("tbody");
+  const tblBodySelector = document.querySelector("tbody");
+
+  //able to add to form without duping
+  if (tbl.childElementCount == 2) {
+    tblBodySelector.remove();
+  }
 
   // creating all cells
   for (let i = 0; i < myLibrary.length; i++) {
@@ -74,5 +80,22 @@ function generateForm() {
   });
 }
 
+function userSubmission() {
+  let userForm = document.getElementById("form");
+
+  userForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let title = document.getElementById("title");
+  let author = document.getElementById("author");
+  let pages = document.getElementById("pages");
+  let read = document.getElementById("read");
+
+  addBookToLibrary({title : title.value, author : author.value, pages : pages.value, read : read.value});
+  generateTable();
+  //find way to clear form after submitting
+  });
+}
+
+userSubmission();
 generateTable();
 generateForm();
