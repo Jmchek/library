@@ -52,6 +52,7 @@ function generateTable() {
 
     for (let j = 0; j < 4; j++) {
       let values = Object.values(myLibrary[i]);
+      row.setAttribute("data-index-number", i);
       // Create a <td> element and a text node, make the text
       // node the contents of the <td>, and put the <td> at
       // the end of the table row
@@ -64,6 +65,10 @@ function generateTable() {
     }
 
     // add the row to the end of the table body
+
+    //testing here
+    // row.appendChild(cell);
+
     tblBody.appendChild(row);
   }
 
@@ -92,7 +97,12 @@ function userSubmission() {
 
   addBookToLibrary({title : title.value, author : author.value, pages : pages.value, read : read.value});
   generateTable();
-  //find way to clear form after submitting
+
+  //reset form after
+  title.value = "";
+  author.value = "";
+  pages.value = "";
+  read.value = "";
   });
 }
 
