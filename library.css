@@ -31,6 +31,6 @@ th, td {
     display: none;
 }
 
-.form-unhid {
-    
+.delButton {
+    width: 100%;
 }

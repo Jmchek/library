@@ -50,7 +50,7 @@ function generateTable() {
     // creates a table row
     const row = document.createElement("tr");
 
-    for (let j = 0; j < 4; j++) {
+    for (let j = 0; j < 5; j++) {
       let values = Object.values(myLibrary[i]);
       row.setAttribute("data-index-number", i);
       // Create a <td> element and a text node, make the text
@@ -59,8 +59,22 @@ function generateTable() {
       const cell = document.createElement("td");
       // const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
       const cellText = document.createTextNode(values[j]);
+      const buttonCreate = document.createElement("button");
+      buttonCreate.innerText = "DELETE";
+      buttonCreate.setAttribute("class", "delButton");
+      buttonCreate.setAttribute("data-index-number", i);
+      buttonCreate.onclick = (x) => {
+        // tblBody.deleteRow(x.target.dataset.indexNumber);
+        // tblBody.deleteRow(x);
+        //working here, find way to delete row
+        console.log(x);
+      };
+      if(j == 4) {
+        cell.appendChild(buttonCreate);
+      } else {
+        cell.appendChild(cellText);
+      }
       //i would reference the object itself whereas j would represent the key in the object
-      cell.appendChild(cellText);
       row.appendChild(cell);
     }
 
