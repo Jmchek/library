@@ -12,7 +12,9 @@ const TheHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
 
 // console.log(TheHobbit.info());
 
-let myLibrary = [{title: 'The Way of Kings', author: 'Brandon Sanderson', pages: 500, read: 'not read yet'}, {title: 'The Bible', author: 'God', pages: 500, read: 'not read yet'}];
+// let myLibrary = [{title: 'The Way of Kings', author: 'Brandon Sanderson', pages: 500, read: 'not read yet'}, {title: 'The Bible', author: 'God', pages: 500, read: 'not read yet'},{title: 'The Road', author: 'Cormac McCarthy', pages: 500, read: 'read'}];
+
+let myLibrary = [new Book ('The Way of Kings','Brandon Sanderson', 500, 'not read yet'), new Book ('The Bible','God', 500, 'not read yet'), new Book ('The Road','Cormac McCarthy', 500, 'read')];
 
 function Book(title, author, pages, read) {
         this.title = title;
@@ -23,6 +25,14 @@ function Book(title, author, pages, read) {
              return title + " by " + author + ", " + pages + " pages, " + read;
         }
     }
+
+Book.prototype.readChange = function() {
+  if (this.read == "read") {
+    this.read = "not read yet";
+  } else {
+    this.read = "read";
+  };
+};
 
 function addBookToLibrary(userBook) {
   myLibrary.push(userBook);
@@ -57,18 +67,17 @@ function generateTable() {
       // node the contents of the <td>, and put the <td> at
       // the end of the table row
       const cell = document.createElement("td");
-      // const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
       const cellText = document.createTextNode(values[j]);
       const buttonCreate = document.createElement("button");
+      // delete button
       buttonCreate.innerText = "DELETE";
       buttonCreate.setAttribute("class", "delButton");
       buttonCreate.setAttribute("data-index-number", i);
       buttonCreate.onclick = (x) => {
-        // tblBody.deleteRow(x.target.dataset.indexNumber);
-        // tblBody.deleteRow(x);
-        //working here, find way to delete row
-        console.log(x);
+        console.log(x.target.parentNode.parentNode.rowIndex);
+        tblBody.deleteRow(x.target.parentNode.parentNode.rowIndex - 1);
       };
+      
       if(j == 4) {
         cell.appendChild(buttonCreate);
       } else {
@@ -79,9 +88,6 @@ function generateTable() {
     }
 
     // add the row to the end of the table body
-
-    //testing here
-    // row.appendChild(cell);
 
     tblBody.appendChild(row);
   }
@@ -109,7 +115,7 @@ function userSubmission() {
   let pages = document.getElementById("pages");
   let read = document.getElementById("read");
 
-  addBookToLibrary({title : title.value, author : author.value, pages : pages.value, read : read.value});
+  addBookToLibrary(new Book (title.value,author.value, pages.value, read.value));
   generateTable();
 
   //reset form after
