@@ -60,7 +60,7 @@ function generateTable() {
     // creates a table row
     const row = document.createElement("tr");
 
-    for (let j = 0; j < 5; j++) {
+    for (let j = 0; j < 6; j++) {
       let values = Object.values(myLibrary[i]);
       row.setAttribute("data-index-number", i);
       // Create a <td> element and a text node, make the text
@@ -74,11 +74,21 @@ function generateTable() {
       buttonCreate.setAttribute("class", "delButton");
       buttonCreate.setAttribute("data-index-number", i);
       buttonCreate.onclick = (x) => {
-        console.log(x.target.parentNode.parentNode.rowIndex);
         tblBody.deleteRow(x.target.parentNode.parentNode.rowIndex - 1);
+        myLibrary.splice(x.target.parentNode.parentNode.rowIndex - 1, 1);
       };
-      
-      if(j == 4) {
+      // read button
+      const buttonRead = document.createElement("button");
+      buttonRead.innerText = "Read it?";
+      buttonRead.setAttribute("class", "readButton");
+      buttonRead.onclick = (x) => {
+        console.log(x.target.parentNode.parentNode.rowIndex - 1);
+        myLibrary[x.target.parentNode.parentNode.rowIndex - 1].readChange();
+        generateTable();
+      };
+      if(j == 5) {
+        cell.appendChild(buttonRead);
+      } else if(j == 4) {
         cell.appendChild(buttonCreate);
       } else {
         cell.appendChild(cellText);
