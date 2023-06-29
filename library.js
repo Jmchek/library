@@ -14,7 +14,7 @@ const TheHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
 
 // let myLibrary = [{title: 'The Way of Kings', author: 'Brandon Sanderson', pages: 500, read: 'not read yet'}, {title: 'The Bible', author: 'God', pages: 500, read: 'not read yet'},{title: 'The Road', author: 'Cormac McCarthy', pages: 500, read: 'read'}];
 
-let myLibrary = [new Book ('The Way of Kings','Brandon Sanderson', 500, 'not read yet'), new Book ('The Bible','God', 500, 'not read yet'), new Book ('The Road','Cormac McCarthy', 500, 'read')];
+let myLibrary = [new Book ('The Way of Kings','Brandon Sanderson', 500, 'not read yet'), new Book ('Dune','Frank Herbert', 500, 'not read yet'), new Book ('The Road','Cormac McCarthy', 500, 'read')];
 
 function Book(title, author, pages, read) {
         this.title = title;
